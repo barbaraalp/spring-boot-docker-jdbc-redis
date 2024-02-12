@@ -41,11 +41,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
     ports:
-      - "5432:5432"  # Mapeia a porta 5432 do contêiner para a porta 5432 do host
+      - "5432:5432"  
 
-    # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
-    # (Adding the "ports" property to this file will not forward from a Codespace.)
   redis-container:
     image: redis:latest
-    ports:
-      - "6379:6379"
+    network_mode: service:db

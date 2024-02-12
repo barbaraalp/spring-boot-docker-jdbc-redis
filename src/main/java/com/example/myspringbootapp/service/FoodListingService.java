@@ -1,9 +1,10 @@
 package com.example.myspringbootapp.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
 import com.example.myspringbootapp.model.FoodListing;
 import com.example.myspringbootapp.repository.FoodListingRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class FoodListingService {
         this.foodListingRepository = foodListingRepository;
     }
 
+    @Cacheable(value = "foodListings", key = "'allFoodListings'")
     public List<FoodListing> getAllFoodListings() {
         return (List<FoodListing>) foodListingRepository.findAll();
     }
