@@ -44,5 +44,5 @@ services:
       - db
       - cache
 networks:
-  microservices:
+  service_network:
     name: service_network

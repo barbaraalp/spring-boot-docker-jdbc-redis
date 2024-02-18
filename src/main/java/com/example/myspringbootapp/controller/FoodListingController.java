@@ -33,6 +33,10 @@ public class FoodListingController {
 
     @GetMapping("/{id}")
     public FoodListing getFoodListingById(@PathVariable Long id) {
-        return foodListingService.getFoodListingById(id);
+        long startTime = System.currentTimeMillis();
+        FoodListing foodListing = foodListingService.getFoodListingById(id);
+        long endTime = System.currentTimeMillis();
+        logger.info("getFoodListingById executed in {} milliseconds", endTime - startTime);
+        return foodListing;
     }
 }

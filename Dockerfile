@@ -1,4 +1,4 @@
 FROM openjdk:17
-ADD my-spring-boot-app-0.0.1-SNAPSHOT.jar /usr/src/my-spring-boot-app-0.0.1-SNAPSHOT.jar
+ADD spring-boot-app-0.0.1.jar /usr/src/spring-boot-app-0.0.1.jar
 WORKDIR usr/src
-ENTRYPOINT ["java","-jar", "my-spring-boot-app-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar", "spring-boot-app-0.0.1.jar"]
