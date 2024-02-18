@@ -15,7 +15,7 @@ import java.util.List;
 public class FoodListingService {
 
     private final FoodListingRepository foodListingRepository;
-    private static final Logger logger = LoggerFactory.getLogger(FoodListingService.class); // Adicione esta linha
+    private static final Logger logger = LoggerFactory.getLogger(FoodListingService.class);
 
     @Autowired
     public FoodListingService(FoodListingRepository foodListingRepository) {
@@ -31,17 +31,5 @@ public class FoodListingService {
 
     public FoodListing getFoodListingById(Long id) {
         return foodListingRepository.findById(id).orElse(null);
-    }
-
-    public List<FoodListing> getFoodListingsByLocation(String location) {
-        return foodListingRepository.findByLocation(location);
-    }
-
-    public FoodListing saveFoodListing(FoodListing foodListing) {
-        return foodListingRepository.save(foodListing);
-    }
-
-    public void deleteFoodListing(Long id) {
-        foodListingRepository.deleteById(id);
     }
 }

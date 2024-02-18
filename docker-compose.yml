@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db:
+    container_name: postgresdb
+    image: postgres:latest
+    volumes:
+      - ./files:/docker-entrypoint-initdb.d
+    environment:
+      # NOTE: POSTGRES_DB/USER/PASSWORD should match values in app container
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"  
+  cache:
+    image: redis:latest
+    ports: 
+      - "6379:6379"
+  app:
+    container_name: javadev
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_REDIS_HOST: cache
+      SPRING_REDIS_PORT: 6379
+    depends_on:
+      - db
+      - cache
