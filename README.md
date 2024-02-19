@@ -18,9 +18,7 @@ Este projeto demonstra como criar uma aplicação Java Spring Boot que interage 
 
 ## Pré-requisitos
 
-Antes de começar, certifique-se de ter os seguintes itens instalados em sua máquina:
-- [Java 17+](https://www.java.com/pt-BR/download/)
-- [Maven](https://maven.apache.org/download.cgi)
+Antes de começar, certifique-se de ter o seguinte item instalado em sua máquina:
 - [Docker](https://www.docker.com/get-started)
 
 ## Instruções de Compilação
@@ -31,21 +29,13 @@ Para compilar e executar o projeto, siga estes passos:
 
 2. Abra um terminal ou prompt de comando e navegue até o diretório do projeto.
 
-3. Execute o seguinte comando Maven para limpar e instalar o projeto:
-
-```sh
-mvn clean install
-```
-
-Com o .jar gerado, certifique-se de colocá-lo no diretório correto para ser utilizado pelo Dockerfile.
-
-4. Após a compilação bem-sucedida, use o Docker Compose para iniciar o banco de dados PostgreSQL, o cache Redis e a aplicação Java Spring Boot:
+3. Use o Docker Compose para iniciar o banco de dados PostgreSQL, o cache Redis e a aplicação Java Spring Boot:
 
 ```sh
 docker-compose up -d
 ```
 
-5. Para verificar se o caching está funcionando corretamente, verifique os logs do contêiner da aplicação Java:
+4. Para verificar se o caching está funcionando corretamente, verifique os logs do contêiner da aplicação Java:
 
 ```sh
 docker logs javadev
